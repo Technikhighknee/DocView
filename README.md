@@ -16,6 +16,9 @@ A window will open asking for a folder. Pick the documentation directory and the
 - `npm run build` – compile TypeScript and bundle the renderer.
 - `npm run start` – build then start the Electron app.
 - `npm test` – run Vitest.
+- End-to-end tests require a display. When running in headless environments,
+  `xvfb-run` must be available. The test harness detects the absence of the
+  `DISPLAY` variable and launches Electron using `xvfb-run` automatically.
 
 ## Architecture
 

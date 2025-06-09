@@ -5,7 +5,13 @@ import electron from 'electron';
 
 function runElectron(appPath: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    const child = spawn(electron as unknown as string, [appPath], {
+    const useXvfb = !process.env.DISPLAY;
+    const command = useXvfb ? 'xvfb-run' : (electron as unknown as string);
+    const electronArgs = ['--no-sandbox', appPath];
+    const args = useXvfb
+      ? ['-a', electron as unknown as string, ...electronArgs]
+      : electronArgs;
+    const child = spawn(command, args, {
       env: { ...process.env, E2E_TEST: '1' },
       stdio: 'ignore'
     });
