@@ -1,6 +1,7 @@
 interface API {
   chooseRoot(): Promise<{ root: string; tree: DirNode } | null>;
   readFile(path: string): Promise<string>;
+  openExternal(url: string): Promise<void>;
 }
 
 declare const api: API;
@@ -57,3 +58,13 @@ async function chooseFolder() {
 }
 
 chooseFolder();
+
+document.addEventListener('click', (e) => {
+  const anchor = (e.target as HTMLElement).closest('a');
+  if (!anchor) return;
+  const href = anchor.getAttribute('href');
+  if (href && /^https?:\/\//i.test(href)) {
+    e.preventDefault();
+    api.openExternal(href);
+  }
+});
