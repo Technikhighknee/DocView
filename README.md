@@ -9,7 +9,7 @@ npm install
 npm run start
 ```
 
-A window will open asking for a folder. Pick the documentation directory and the tree will appear on the left. Selecting a file renders it on the right.
+A window will open with a welcome screen. Click **Open Folder** and choose your documentation directory. The tree will appear on the left and selecting a file renders it on the right.
 
 ## Development
 
