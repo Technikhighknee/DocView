@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import { promises as fs, Dirent } from 'fs';
 import path from 'path';
 import { DirNode, FileNode, Node } from './types';
 
@@ -7,7 +7,7 @@ const ENTRY_NAMES = ['index.md', 'readme.md', 'doc.md'];
 export async function walkDirectory(root: string, dir = '.'):
   Promise<DirNode> {
   const absDir = path.join(root, dir);
-  let items: fs.Dirent[] = [];
+  let items: Dirent[] = [];
   try {
     items = await fs.readdir(absDir, { withFileTypes: true });
   } catch (err) {
