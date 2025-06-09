@@ -21,4 +21,10 @@ describe('walkDirectory', () => {
     const sub = tree.children.find(c => (c as any).name === 'sub') as any;
     expect(sub.entryFile?.name).toBe('index.md');
   });
+
+  it('returns partial node when directory missing', async () => {
+    const missing = path.join(tempDir, 'does-not-exist');
+    const tree = await walkDirectory(missing);
+    expect(tree.children.length).toBe(0);
+  });
 });

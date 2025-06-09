@@ -7,7 +7,19 @@ const ENTRY_NAMES = ['index.md', 'readme.md', 'doc.md'];
 export async function walkDirectory(root: string, dir = '.'):
   Promise<DirNode> {
   const absDir = path.join(root, dir);
-  const items = await fs.readdir(absDir, { withFileTypes: true });
+  let items: fs.Dirent[] = [];
+  try {
+    items = await fs.readdir(absDir, { withFileTypes: true });
+  } catch (err) {
+    // return partial node if directory can't be read
+    return {
+      type: 'directory',
+      name: path.basename(absDir),
+      path: dir,
+      children: [],
+      entryFile: undefined,
+    };
+  }
   const children: Node[] = [];
   let entryFile: FileNode | undefined;
 

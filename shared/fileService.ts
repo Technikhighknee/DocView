@@ -14,6 +14,10 @@ export class FileService {
 
   async readFile(p: string) {
     const full = this.resolveSafe(p);
-    return fs.readFile(full, 'utf-8');
+    try {
+      return await fs.readFile(full, 'utf-8');
+    } catch (err: any) {
+      throw new Error(`Failed to read file ${p}: ${err.message}`);
+    }
   }
 }

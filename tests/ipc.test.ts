@@ -14,4 +14,12 @@ describe('FileService and parser integration', () => {
     const html = parseMarkdown(md);
     expect(html).toContain('<h1');
   });
+
+  it('throws descriptive error when file missing', async () => {
+    const root = path.join(process.cwd(), 'tmp-ipc-missing');
+    await fs.rm(root, { recursive: true, force: true });
+    await fs.mkdir(root, { recursive: true });
+    const service = new FileService(root);
+    await expect(service.readFile('no.md')).rejects.toThrow('Failed to read file');
+  });
 });
