@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc && vite build",
     "start": "npm run build && electron dist/electron-main/main.js",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build && vitest run --config vitest.e2e.config.ts tests/e2e.test.ts"
   },
   "keywords": [],
   "author": "",
