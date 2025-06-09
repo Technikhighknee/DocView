@@ -6,7 +6,9 @@
     "rootDir": ".",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node", "electron"]
   },
-  "include": ["electron-main/**/*", "shared/**/*", "src/**/*", "tests/**/*"]
+  "include": ["electron-main/**/*", "shared/**/*"],
+  "exclude": ["tests"]
 }
