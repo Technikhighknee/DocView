@@ -9,9 +9,11 @@
   <link rel="stylesheet" href="./styles/index.css">
   <title>DocView</title>
 </head>
-<body class="h-screen flex">
-  <div id="sidebar" class="w-1/3 h-full overflow-auto border-r"></div>
-  <div id="content" class="markdown-body p-4 w-2/3 h-full overflow-auto"></div>
+<body>
+  <div id="app" class="flex h-screen">
+    <aside id="sidebar"></aside>
+    <main id="content"></main>
+  </div>
   <script type="module" src="./main.ts"></script>
 </body>
 </html>

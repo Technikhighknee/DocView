@@ -9,6 +9,6 @@
     "skipLibCheck": true,
     "types": ["node", "electron"]
   },
-  "include": ["electron-main/**/*", "shared/**/*"],
+  "include": ["electron-main/**/*", "shared/**/*", "src/**/*"],
   "exclude": ["tests"]
 }
