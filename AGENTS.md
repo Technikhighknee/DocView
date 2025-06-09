@@ -20,7 +20,7 @@ It is meant to be used like a "Markdown viewer for your local docs", with zero d
 The final application must:
 
 - Open as an Electron window with a **split layout**: sidebar (navigation) and viewer (content)
-- Use a **responsive layout** — no fixed pixel widths
+- Use a responsive layout — avoid fixed pixel widths; prefer relative sizing with reasonable min/max constraints for usability
 - On the **left side**, show a recursive **folder tree** of the selected root directory:
   - Only shows folders and `.md` files
   - Collapsible folders with icons
@@ -87,7 +87,7 @@ The final application must:
   - The viewer shows a centered welcome screen with:
     - Short description of the app
     - A button labeled: **"Open Folder"**
-    - Optional: Drop area for drag & drop
+    - Optional: Drop area for dragging a folder (not files) into the window, to select it as the root — no file uploads or imports
 - Once a folder is selected:
   - The file tree loads in the sidebar
   - The first available file (`index.md`, `readme.md`, `doc.md`) is rendered automatically
