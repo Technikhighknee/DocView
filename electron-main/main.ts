@@ -18,6 +18,15 @@ function createWindow() {
   });
 
   mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'));
+  mainWindow.webContents.once('did-fail-load', (_e, code, desc) => {
+    console.error('Load failed', code, desc);
+    if (process.env.E2E_TEST) app.exit(1);
+  });
+  mainWindow.webContents.once('did-finish-load', () => {
+    if (process.env.E2E_TEST) {
+      setTimeout(() => app.exit(0), 500);
+    }
+  });
 }
 
 app.whenReady().then(() => {
