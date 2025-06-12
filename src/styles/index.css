@@ -1,2 +1,32 @@
 @import "../../node_modules/tailwindcss/preflight.css";
 @import "../../node_modules/tailwindcss/utilities.css";
+
+#container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "sidebar content";
+}
+
+#sidebar {
+    grid-area: sidebar;
+    background-color: #414040;
+    color: #d4d4d4;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 1rem 0.5rem 1rem 0.25rem;
+}
+
+#sidebar:first-child {
+    padding-top: 0.5rem;
+}
+
+#content {
+    grid-area: content;
+    background-color: #1e1e1e;
+    color: #e4e4e4;
+    padding: 2rem;
+    overflow-y: auto;
+}
