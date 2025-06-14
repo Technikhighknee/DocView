@@ -8,4 +8,7 @@ contextBridge.exposeInMainWorld('api', {
   readFile: async (path: string): Promise<string> => {
     return ipcRenderer.invoke('readFile', path);
   },
+  openExternal: async (url: string): Promise<void> => {
+    return ipcRenderer.invoke('openExternal', url);
+  },
 });

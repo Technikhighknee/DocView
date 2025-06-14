@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron';
 import path from 'path';
 import { walkDirectory } from '../shared/directoryWalker';
 import { FileService } from '../shared/fileService';
@@ -55,4 +55,8 @@ ipcMain.handle('readFile', async (_e, filePath: string) => {
   const md = await fileService.readFile(filePath);
   const html = parseMarkdown(md);
   return html;
+});
+
+ipcMain.handle('openExternal', async (_e, url: string) => {
+  await shell.openExternal(url);
 });
